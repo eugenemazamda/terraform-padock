@@ -14,9 +14,9 @@ variable "postgresql_version" {
   default = "POSTGRES_14"
 }
 
-provider "google" {
-  region = "${var.region}"
-}
+# provider "google" {
+#   region = "${var.region}"
+# }
 
 variable "network_name" {
   default = "psql-padok"
