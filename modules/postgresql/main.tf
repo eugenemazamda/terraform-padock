@@ -28,9 +28,9 @@ resource "google_sql_database_instance" "instance" {
     }
   }
 
-  lifecycle {
-    ignore_changes = ["disk_size"]
-  }
+  # lifecycle {
+  #   ignore_changes = ["disk_size"]
+  # }
 }
 
 resource "google_sql_database" "database" {
