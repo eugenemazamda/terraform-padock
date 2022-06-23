@@ -1,11 +1,11 @@
-locals {
-  ip_configuration_enabled = "${length(keys(var.ip_configuration)) > 0 ? true : false }"
+# locals {
+#   ip_configuration_enabled = "${length(keys(var.ip_configuration)) > 0 ? true : false }"
 
-  ip_configurations = {
-    enabled = "${var.ip_configuration}"
-    disabled = "${tomap({})}"
-  }
-}
+#   ip_configurations = {
+#     enabled = "${var.ip_configuration}"
+#     disabled = "${tomap({})}"
+#   }
+# }
 
 resource "google_sql_database_instance" "instance" {
   project = "${var.project_id}"
