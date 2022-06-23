@@ -63,6 +63,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: postgres/
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -88,16 +89,12 @@ jobs:
 
     - name: Terraform - Plan
       run: terraform plan -input=false
-      with:
-        tf_actions_working_dir: postgres/
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
     - name: Terraform - Apply
       if: github.ref == 'refs/heads/"master"' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
-      with:
-        tf_actions_working_dir: postgres/
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
     # - name: Terraform Init
