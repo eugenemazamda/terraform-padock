@@ -31,7 +31,7 @@ module "postgresql-db" {
 
     authorized_networks = [{
       name  = "${var.network_name}"
-      value = "${google_compute_subnetwork.network.ip_cidr_range}"
+      value = "${google_compute_subnetwork.subnet.ip_cidr_range}"
     }]
   }]
 }

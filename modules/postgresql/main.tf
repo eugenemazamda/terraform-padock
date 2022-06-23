@@ -16,7 +16,7 @@ resource "google_sql_database_instance" "instance" {
   settings {
     tier                        = "${var.project_id}"
     activation_policy           = "${var.activation_policy}"
-    ip_configuration            = ["${local.ip_configurations["${local.ip_configuration_enabled ? "enabled" : "disabled"}"]}"]
+    # ip_configuration            = ["${local.ip_configurations["${local.ip_configuration_enabled ? "enabled" : "disabled"}"]}"]
 
     disk_autoresize = "${var.disk_autoresize}"
     disk_size       = "${var.disk_size}"
