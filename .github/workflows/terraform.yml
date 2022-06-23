@@ -74,9 +74,6 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       # with:
       #   cli_config_credentials_token: ${{ secrets.GOOGLE_CREDENTIALS }}
-    - name: terraform plan
-      with:
-        path: postgres
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
