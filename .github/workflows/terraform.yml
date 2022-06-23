@@ -63,7 +63,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: postgres/
+        # working-directory: postgres/
 
     steps:
     # Checkout the repository to the GitHub Actions runner
