@@ -20,7 +20,7 @@ resource "random_id" "name" {
 }
 
 module "postgresql-db" {
-  source = "modules/postgresql"
+  source = "../modules/postgresql"
   name   = "padock-postgresql-${random_id.name.hex}"
   database_version = "${var.postgresql_version}"
   project_id   = "${var.project_id}"
