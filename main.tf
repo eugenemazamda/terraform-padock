@@ -3,7 +3,7 @@
 resource "google_compute_network" "network" {
   project     = "${var.project_id}"
   name        = "${var.network_name}"
-  autauto_create_subnetworks = false 
+  auto_create_subnetworks = false
 }
 
 resource "google_compute_subnetwork" "subnet" {
@@ -24,6 +24,7 @@ module "postgresql-db" {
   name   = "padock-postgresql-${random_id.name.hex}"
   database_version = "${var.postgresql_version}"
   project_id   = "${var.project_id}"
+  zone         = "c"
 
   ip_configuration = [{
     ipv4_enabled = true

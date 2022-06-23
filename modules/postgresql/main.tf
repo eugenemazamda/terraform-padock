@@ -1,9 +1,9 @@
 locals {
-  ip_configuration_enabled = "${lenght(keys(var.ip_configuration)) > 0 ? true : false }"
+  ip_configuration_enabled = "${length(keys(var.ip_configuration)) > 0 ? true : false }"
 
   ip_configurations = {
     enabled = "${var.ip_configuration}"
-    disabled = "${map()}"
+    disabled = "${tomap({})}"
   }
 }
 
@@ -22,10 +22,10 @@ resource "google_sql_database_instance" "instance" {
     disk_size       = "${var.disk_size}"
     disk_type       = "${var.disk_type}"
     pricing_plan    = "${var.pricing_plan}"
-  }
 
-  location_preference {
-    zone = "${var.region}-${var.zone}"
+    location_preference {
+      zone = "${var.region}-${var.zone}"
+    }
   }
 
   lifecycle {
@@ -57,7 +57,7 @@ resource "google_sql_user" "user_db" {
   name = "${var.user_name}"
   project = "${var.project_id}"
   instance = "${google_sql_database_instance.instance.name}"
-  password = "${var.user_password == "" ? random_id.user_password.hex : var.user_password}"
+  password = "${var.user_password == "" ? random_id.user-password.hex : var.user_password}"
   depends_on = [
     "google_sql_database_instance.instance"
   ]
