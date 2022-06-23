@@ -75,12 +75,9 @@ jobs:
       # with:
       #   cli_config_credentials_token: ${{ secrets.GOOGLE_CREDENTIALS }}
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform - Init
-      uses: hashicorp/terraform-github-actions@v0.8.0
-      with:
-        tf_actions_subcommand: "init"
-        tf_actions_version: "latest"
-        tf_actions_working_dir: postgres/
+    
+    - name: Terraform Init
+      run: terraform init
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
     
